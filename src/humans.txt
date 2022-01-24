@@ -1,0 +1,10 @@
+# TEAM
+
+
+
+# SITE
+
+  Last update:
+  Standards: HTML5, CSS3, Typescript, Love
+  Components: Angular, TaigaUI, NodeJS
+  Software: WebStorm

@@ -1,0 +1,36 @@
+@mixin dash-start($width, $bg-color) {
+  //position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: $width;
+    background: $bg-color;
+    transform: translateX(-98%);
+    clip-path: polygon(0% 100%, 98% 0%, 100% 100%);
+  }
+}
+
+@mixin dash-end($width, $bg-color) {
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: $width;
+    background: $bg-color;
+    transform: translateX(98%);
+    clip-path: polygon(100% 0%, 0% 0%, 2% 100%);
+  }
+}
+
+@mixin dash-surround($width, $bg-color) {
+  @include dash-start($width, $bg-color);
+  @include dash-end($width, $bg-color);
+}

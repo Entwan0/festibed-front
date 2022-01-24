@@ -1,0 +1,97 @@
+@use 'variables' as vrbl;
+@use 'mixins';
+
+.font-secondary {
+  font-family: map-get(vrbl.$fonts, 'secondary');
+}
+
+.bg-semi-transparent {
+  background: #e6eff7;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horizontal-divider {
+  width: 100%;
+  height: 1px;
+  background: map-get(vrbl.$colors, 'primary');
+}
+
+@layer components {
+  @each $name in map-get(vrbl.$colors, 'list') {
+    @each $suffix in '', -tint {
+      .bg-#{$name}#{$suffix} {
+        background: map-get(vrbl.$colors, #{$name}#{$suffix}) !important;
+        color: map-get(vrbl.$colors, #{$name}-contrast) !important;
+      }
+
+      .text-#{$name}#{$suffix} {
+        color: map-get(vrbl.$colors, #{$name}#{$suffix}) !important;
+      }
+
+      .border-#{$name}#{$suffix} {
+        border-color: map-get(vrbl.$colors, #{$name}#{$suffix}) !important;
+      }
+    }
+  }
+}
+
+.nsm-dialog.img-modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: none;
+
+  .nsm-content {
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+
+    .close-icon {
+      position: absolute;
+      top: -25px;
+      right: 0;
+      color: white;
+      cursor: pointer;
+      transition: 130ms;
+
+      &:hover {
+        transform: rotate(90deg);
+      }
+    }
+
+    img {
+      max-width: 90vw;
+      max-height: calc(100vh - 60px);
+    }
+  }
+}
+
+.table-border {
+  $border: 1px solid map-get(vrbl.$colors, 'primary');
+  border: none;
+
+  th,
+  td {
+    border: none;
+    border-bottom: $border;
+  }
+
+  th {
+    border-right: $border;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}

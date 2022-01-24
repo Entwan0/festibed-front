@@ -1,0 +1,44 @@
+$colors: (
+  background: #f6f6f6,
+
+  primary: #b60011,
+  primary-tint: #960e1d,
+  primary-contrast: white,
+
+  secondary: #36393f,
+  secondary-tint: #36393f,
+  secondary-contrast: white,
+
+  danger: red,
+  danger-tint: red,
+  danger-contrast: white,
+
+  list: (
+    primary,
+    secondary,
+    danger,
+  ),
+);
+
+$fonts: (
+  primary: (
+    'Lato',
+    Helvetica,
+    Arial,
+    sans-serif,
+  ),
+  secondary: (
+    'Raleway',
+    Helvetica,
+    Arial,
+    sans-serif,
+  ),
+);
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+@function font($name) {
+  @return map-get($fonts, $name);
+}

@@ -1,0 +1,85 @@
+<div class="sm:w-5/6 md:w-4/6 lg:w-3/6 m-auto p-5">
+  <form [formGroup]="form">
+
+    <div class="flex mb-5 mt-3">
+      <label tuiLabel label="Nom festival" class="w-full tui-label-padding">
+        <tui-input formControlName="title" class="pr-5">
+          Ex: Gararock
+        </tui-input>
+      </label>
+
+      <label tuiLabel label="Nombre ticket" class="w-full tui-label-padding">
+        <tui-input-number formControlName="nbrTicket" class="pr-5">
+          Ex: 100
+        </tui-input-number>
+      </label>
+    </div>
+
+    <quill-editor
+      formControlName="details"
+      [readOnly]="readonly"
+      format="json"
+      placeholder="Description de votre festival"
+    >
+      <div quill-editor-toolbar>
+        <span class="ql-formats">
+          <select class="ql-header" title="Titre">
+            <option [value]="1">Titre 1</option>
+            <option [value]="2">Titre 2</option>
+            <option [value]="false" selected>Normal</option>
+          </select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-bold" title="Gras"></button>
+          <button class="ql-italic" title="Italique"></button>
+          <button class="ql-underline" title="Souligné"></button>
+          <button class="ql-strike" title="Barré"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-blockquote" title="Citation"></button>
+          <button class="ql-code-block" title="Code"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-list" value="ordered" title="Liste ordonnée"></button>
+          <button class="ql-list" value="bullet" title="Liste à puces"></button>
+          <select class="ql-align" title="Alignement"></select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-indent" value="-1" title="Retrait d'indentation"></button>
+          <button class="ql-indent" value="+1" title="Ajout d'indentation"></button>
+        </span>
+        <span class="ql-formats">
+          <select class="ql-color" title="Couleur du texte"></select>
+          <select class="ql-background" title="Couleur du fond"></select>
+          <button class="ql-clean" title="Supprimer le style du texte"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-link" title="Lien"></button>
+        </span>
+      </div>
+    </quill-editor>
+
+    <tui-input-file
+      formControlName="attachments"
+      [readOnly]="readonly"
+      [maxFileSize]="7500000"
+      [multiple]="true"
+      link="Choisissez des fichiers à importer"
+      label="ou glissez-les ici (max 7.5MB)"
+      size="l"
+      class="my-5"
+    ></tui-input-file>
+  </form>
+
+  <div class="w-min m-auto">
+    <button
+      tuiButton
+      [disabled]="!readonly && !form.valid"
+      [routerLink]="readonly ? ['../../list'] : []"
+      [showLoader]="!!(submitted$ | async)"
+      (click)="onSubmit()"
+    >
+      {{ readonly ? 'Retour' : 'Valider' }}
+    </button>
+  </div>
+</div>

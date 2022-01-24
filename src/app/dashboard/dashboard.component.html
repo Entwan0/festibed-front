@@ -1,0 +1,52 @@
+<header class="w-full bg-secondary py-3">
+  <div class="flex items-center justify-between">
+    <div class="flex-center sm:pl-5">
+      <div routerLink="/festival/listeFestival" class="flex-center cursor-pointer">
+        <img src="/assets/logo.png"  alt="Logo" class="h-10 pr-2 "/>
+      </div>
+    </div>
+
+    <div class="flex-center">
+      <button tuiButton routerLink="/festival/formFestival" class="pr-5">Ajouter un festival </button>
+
+      <div
+        (tuiActiveZoneChange)="userDropdownOpened = false"
+        [tuiDropdown]="userDropdownOpened"
+        [tuiDropdownContent]="dropdown"
+        class="mr-10"
+      >
+        <ic-icon
+          (click)="userDropdownOpened = !userDropdownOpened"
+          icon="user"
+          class="text-4xl leading-0 cursor-pointer inline-block"
+        ></ic-icon>
+        <ng-template #dropdown>
+          <div class="p-2 flex-center flex-col">
+            <h3 class="pb-5">{{ username }}</h3>
+            <button tuiButton (click)="logout()">Déconnexion</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div [class.opened]="sidebarOpen" class="sidebar">
+  <div
+    *ngFor="let item of sidebarItems"
+    [routerLink]="item.url"
+    class="item flex items-center cursor-pointer pb-5"
+  >
+    <ic-icon
+      [icon]="item.icon"
+      class="icon leading-0 p-2 border border-solid rounded-full"
+    ></ic-icon>
+    <div class="text-center flex-grow">
+      <span class="uppercase font-bold">{{ item.title }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="pad-sidebar-left">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "extranet-prod"
+  },
+  "targets": {
+    "extranet-prod": {
+      "hosting": {
+        "extranet-prod": [
+          "extranet",
+          "extranet-staging"
+        ]
+      }
+    }
+  }
+}

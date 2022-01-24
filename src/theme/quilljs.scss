@@ -1,0 +1,27 @@
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
+
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+  border-radius: var(--tui-lesser-radius) var(--tui-lesser-radius);
+  border: 1px solid;
+  border-color: var(--tui-base-03);
+}
+
+.ql-toolbar.ql-snow {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: lightgrey;
+}
+
+.ql-container.ql-snow {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
+}
+
+.ql-snow {
+  .ql-tooltip {
+    z-index: 1;
+  }
+}

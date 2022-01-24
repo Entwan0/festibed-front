@@ -1,0 +1,51 @@
+@use 'src/theme/variables' as vrbl;
+
+$baseWidth: 60px;
+$fullWidth: 200px;
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  height: 100%;
+  transition-property: width;
+  transition-duration: var(--tui-duration);
+  width: $baseWidth;
+  padding: 20px 0;
+  background: white;
+  z-index: 1;
+  overflow: hidden;
+  border-right: 1px solid adjust-color(vrbl.color(primary), $alpha: -0.8);
+
+  .item {
+    width: $fullWidth - 30px;
+
+    .icon {
+      margin: 0 10px;
+      font-size: 23px;
+      border-color: var(--tui-primary);
+      transition-property: background, color;
+      transition-duration: var(--tui-duration);
+    }
+
+    &:hover {
+      .icon {
+        background: var(--tui-primary);
+        color: var(--tui-primary-text);
+      }
+    }
+  }
+}
+
+.sidebar:hover,
+.sidebar.opened {
+  width: $fullWidth;
+}
+
+.pad-sidebar-left {
+  padding-left: $baseWidth;
+}
+
+#dash{
+  color: var(--tui-primary);
+  font-weight: bold;
+}

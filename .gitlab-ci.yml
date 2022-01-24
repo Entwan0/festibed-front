@@ -1,0 +1,106 @@
+image: node:lts-alpine
+
+stages:
+  - deps
+  - test
+  - build
+  - deploy
+
+deps:
+  stage: deps
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+  only:
+    - develop
+    - master
+    - feature/ci
+    - merge_requests
+  script:
+    - yarn
+
+lint:
+  stage: test
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+  only:
+    - develop
+    - master
+    - feature/ci
+    - merge_requests
+  script:
+    - yarn lint
+
+build staging:
+  stage: build
+  only:
+    - develop
+    - feature/ci
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+  script:
+    - yarn build:staging
+  artifacts:
+    paths:
+      - dist/
+
+build production:
+  stage: build
+  only:
+    - master
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+  script:
+    - yarn build:prod
+  artifacts:
+    paths:
+      - dist/
+
+deploy staging:
+  image: andreysenov/firebase-tools
+  stage: deploy
+  environment:
+    name: staging
+    url: $FIREBASE_URL
+  only:
+    - develop
+  dependencies:
+    - build staging
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+  script:
+    - firebase deploy --only hosting:$FIREBASE_APP_NAME --token $FIREBASE_TOKEN
+
+deploy production:
+  image: andreysenov/firebase-tools
+  stage: deploy
+  environment:
+    name: production
+    url: $FIREBASE_URL
+  only:
+    - master
+  dependencies:
+    - build production
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+  script:
+    - firebase deploy --only hosting:$FIREBASE_APP_NAME --token $FIREBASE_TOKEN
