@@ -7,21 +7,43 @@
     </div>
 
     <div class="flex-center">
-      <button tuiButton routerLink="/festival/formFestival" class="pr-5">Ajouter un festival </button>
+      <button tuiButton routerLink="/festival/formFestival" class="mr-8">Ajouter un festival </button>
 
       <div
-        (tuiActiveZoneChange)="userDropdownOpened = false"
-        [tuiDropdown]="userDropdownOpened"
-        [tuiDropdownContent]="dropdown"
-        class="mr-10"
+        (tuiActiveZoneChange)="shoppingCartDropdownOpened = false"
+        [tuiDropdown]="shoppingCartDropdownOpened"
+        [tuiDropdownContent]="shoppingCart"
+        class="mr-14"
       >
         <ic-icon
-          (click)="userDropdownOpened = !userDropdownOpened"
-          icon="user"
+          (click)="shoppingCartDropdownOpened = !shoppingCartDropdownOpened; userDropdownOpened = false"
+          icon="shoppingCart"
           class="text-4xl leading-0 cursor-pointer inline-block"
         ></ic-icon>
-        <ng-template #dropdown>
+        <ng-template #shoppingCart>
+          <p class="text-lg font-bold flex-center flex-col ">
+            Panier
+          </p>
           <div class="p-2 flex-center flex-col">
+            <button tuiButton (click)="allerAuPanier()">Voir le panier</button>
+          </div>
+        </ng-template>
+      </div>
+
+      <div
+        (tuiActiveZoneChange)="toggleDropdown(false)"
+        [tuiDropdown]="userDropdownOpened"
+        [tuiDropdownContent]="dropdown"
+        class="mr-14"
+      >
+        <ic-icon
+          (click)="userDropdownOpened = !userDropdownOpened; shoppingCartDropdownOpened = false"
+          icon="user"
+          class="text-4xl leading-0 cursor-pointer inline-block"
+          #dropdownBtn
+        ></ic-icon>
+        <ng-template #dropdown>
+          <div class="p-2 flex-center flex-col" #dropdownDiv>
             <h3 class="pb-5">{{ username }}</h3>
             <button tuiButton (click)="logout()">Déconnexion</button>
           </div>

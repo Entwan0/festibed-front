@@ -4,6 +4,7 @@ import { FestivalComponent } from './pages/festival.component';
 import { FestivalListComponent } from './pages/listFestival/list.component';
 import { LogementListComponent } from './pages/listLogement/list.component';
 import { FestivalFormComponent } from './pages/formFestival/form.component';
+import { PanierFormComponent } from './pages/panier/panier.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'listeFestival', component: FestivalListComponent },
       { path: 'listeLogement', component: LogementListComponent },
       { path: 'formFestival', component: FestivalFormComponent },
+      { path: 'panier', component: PanierFormComponent },
       { path: '**', redirectTo: '/' },
     ],
   },
