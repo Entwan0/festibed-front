@@ -49,3 +49,12 @@ $fullWidth: 200px;
   color: var(--tui-primary);
   font-weight: bold;
 }
+
+.circle{
+  position:absolute;
+  width:20px;
+  background:#FF0000;
+  height:20px;
+  text-align:center;
+  border-radius:100px;
+}

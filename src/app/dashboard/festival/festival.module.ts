@@ -31,7 +31,7 @@ import {
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
-  TuiDropdownSelectionModule,
+  TuiDropdownSelectionModule, TuiInputDateModule, TuiInputDateRangeModule,
   TuiInputFileModule,
   TuiInputModule,
   TuiInputNumberModule,
@@ -107,6 +107,8 @@ import { DescriptionFestivalComponent } from './pages/descriptionFestival/descri
     QuillModule,
     TuiInputNumberModule,
     MatGridListModule,
+    TuiInputDateRangeModule,
+    TuiInputDateModule,
   ],
 })
 export class FestivalModule {}

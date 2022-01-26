@@ -4,13 +4,16 @@ import ticketIcon from '@iconify/icons-ph/ticket';
 import userIcon from '@iconify/icons-ph/user';
 import houseIcon from '@iconify/icons-ph/house';
 import shoppingartIcon from '@iconify/icons-ph/shopping-cart';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClickService } from '../core/services/click.service';
+import { FestivalListComponent } from './festival/pages/listFestival/list.component';
+import { SharedService } from '../core/services/SharedService';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  providers: [SharedService],
 })
 export class DashboardComponent implements OnDestroy {
   @ViewChild('dropdownBtn') dropdownBtn!: ElementRef;
@@ -46,11 +49,22 @@ export class DashboardComponent implements OnDestroy {
 
   userDropdownOpened = false;
   shoppingCartDropdownOpened = false;
+  nbElementPanier: number = 0;
 
-  constructor(iconSrv: IconService, private router: Router, private clickSrv: ClickService) {
+  constructor(
+    iconSrv: IconService,
+    private router: Router,
+    private clickSrv: ClickService,
+    private route: ActivatedRoute,
+    private _sharedService: SharedService,
+  ) {
     iconSrv.registerAll({
       user: userIcon,
       shoppingCart: shoppingartIcon,
+    });
+    _sharedService.changeEmitted$.subscribe((text) => {
+      console.log(text);
+      this.ajoutPanier();
     });
   }
 
@@ -61,6 +75,10 @@ export class DashboardComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.clickObs.unsubscribe();
+  }
+
+  ajoutPanier() {
+    this.nbElementPanier++;
   }
 
   logout() {

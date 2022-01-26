@@ -1,14 +1,33 @@
-<div class="text-3xl font-bold flex-center flex-col ">
-  Nom festival
-</div>
+<form [formGroup]="form">
 
-<div class="tui-col_md-12">
-  <label tuiLabel label="Détail festival" class="w-full">
-    <tui-text-area formControlName="description">
-        Type a text
-    </tui-text-area>
-  </label>
-</div>
+  <div class="text-3xl font-bold flex-center flex-col ">
+    Nom festival
+  </div>
+
+  <div class="tui-col_md-12">
+    <label tuiLabel label="Détail festival" class="w-full">
+      <tui-text-area [expandable]=true [readOnly]="true" formControlName="description">
+
+      </tui-text-area>
+    </label>
+  </div>
+
+  <div class="tui-col_md-12 mt-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <label tuiLabel label="dates début" class="w-full">
+          <tui-input-date [readOnly]=true class="b-form" formControlName="date">
+          </tui-input-date>
+        </label>
+
+        <label tuiLabel label="dates fin" class="w-full">
+          <tui-input-date [readOnly]=true class="b-form" formControlName="date">
+          </tui-input-date>
+        </label>
+    </div>
+  </div>
+
+</form>
+
 
 <h1>
   j'ai l'id {{ id }}
