@@ -48,8 +48,9 @@ import { QuillModule } from 'ngx-quill';
 import { LogementListComponent } from './pages/listLogement/list.component';
 import { FestivalFormComponent } from './pages/formFestival/form.component';
 import { PanierFormComponent } from './pages/panier/panier.component';
-import {TuiLetModule} from "@taiga-ui/cdk";
-import {MatGridListModule} from "@angular/material/grid-list";
+import { TuiLetModule } from '@taiga-ui/cdk';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { DescriptionFestivalComponent } from './pages/descriptionFestival/descriptionFestival.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     LogementListComponent,
     FestivalFormComponent,
     PanierFormComponent,
+    DescriptionFestivalComponent,
   ],
   exports: [],
   imports: [
