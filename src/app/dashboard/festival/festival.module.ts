@@ -49,6 +49,7 @@ import { LogementListComponent } from './pages/listLogement/list.component';
 import { FestivalFormComponent } from './pages/formFestival/form.component';
 import { PanierFormComponent } from './pages/panier/panier.component';
 import {TuiLetModule} from "@taiga-ui/cdk";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import {TuiLetModule} from "@taiga-ui/cdk";
     TuiLineClampModule,
     QuillModule,
     TuiInputNumberModule,
+    MatGridListModule,
   ],
 })
 export class FestivalModule {}

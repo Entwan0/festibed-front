@@ -19,6 +19,7 @@ import { QuillModule } from 'ngx-quill';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IconModule } from '@visurel/iconify-angular';
 import { TUI_IS_CYPRESS } from '@taiga-ui/cdk';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -34,6 +35,7 @@ import { TUI_IS_CYPRESS } from '@taiga-ui/cdk';
     IconModule,
     TuiButtonModule,
     TuiDropdownModule,
+    MatGridListModule
   ],
   providers: [
     {
