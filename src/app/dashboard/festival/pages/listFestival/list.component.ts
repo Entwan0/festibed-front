@@ -11,43 +11,87 @@ export class FestivalListComponent implements OnInit {
   festivals = [
     {
       nom: 'gararock',
-      descripton: 'trop bien',
+      ville: 'Grenoble',
+      img: '',
+      prix: '40€',
     },
     {
       nom: 'test',
-      descripton: 'eheh',
+      ville: 'Lyon',
+      img: '',
+      prix: '20€',
     },
     {
       nom: 'test',
-      descripton: 'when',
+      ville: 'Annonay',
+      img: '',
+      prix: '10€',
     },
     {
       nom: 'test4',
-      descripton: 'tg',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '60€',
     },
     {
       nom: 'menfou',
-      descripton: 'when',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '70€',
     },
     {
       nom: 'ok',
-      descripton: 'when',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '110€',
     },
     {
       nom: 'c bien',
-      descripton: 'when',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '10€',
+    },
+    {
+      nom: 'c bien',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '10€',
+    },
+    {
+      nom: 'c bien',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '10€',
+    },
+    {
+      nom: 'c bien',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '10€',
+    },
+    {
+      nom: 'c bien',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '10€',
+    },
+    {
+      nom: 'c bien',
+      ville: 'st etienne de valoux rpz',
+      img: '',
+      prix: '10€',
     },
   ];
 
   ngOnInit() {
-    if (window.innerWidth > 1300) this.breakpoint = 3;
-    else if (window.innerWidth < 700) this.breakpoint = 1;
+    if (window.innerWidth > 1870) this.breakpoint = 3;
+    else if (window.innerWidth < 1280) this.breakpoint = 1;
     else this.breakpoint = 2;
   }
 
   onResize(event: any) {
-    if (window.innerWidth > 1300) this.breakpoint = 3;
-    else if (window.innerWidth < 700) this.breakpoint = 1;
+    if (window.innerWidth > 1870) this.breakpoint = 3;
+    else if (window.innerWidth < 1280) this.breakpoint = 1;
     else this.breakpoint = 2;
   }
 }
