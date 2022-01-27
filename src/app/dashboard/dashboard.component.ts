@@ -10,6 +10,8 @@ import { AjoutPanierService } from '../core/services/ajout-panier.service';
 import { PanierService } from '../core/services/panierService';
 import { FestivalAPI } from '../core/model/api/festival';
 import { EnleverPanierService } from '../core/services/enlever-panier.service';
+import { FacebookAuthService } from '../core/services/facebook-auth.service';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-dashboard',
@@ -47,7 +49,7 @@ export class DashboardComponent implements OnDestroy {
 
   sidebarOpen = false;
 
-  username: string | undefined = '';
+  user!: firebase.User | null;
 
   userDropdownOpened = false;
   shoppingCartDropdownOpened = false;
@@ -63,6 +65,7 @@ export class DashboardComponent implements OnDestroy {
     private _ajoutPanierService: AjoutPanierService,
     private _enleverPanierService: EnleverPanierService,
     private _panierService: PanierService,
+    public authService: FacebookAuthService,
   ) {
     iconSrv.registerAll({
       user: userIcon,
@@ -81,6 +84,7 @@ export class DashboardComponent implements OnDestroy {
       });
       this._panierService.setFestival(this.panier);
     });
+    this.user = this.authService.user;
   }
 
   toggleDropdown(v?: boolean) {

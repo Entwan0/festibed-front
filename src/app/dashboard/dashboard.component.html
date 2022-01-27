@@ -30,7 +30,9 @@
           </p>
 
           <p *ngFor="let element of panier" class="text-center flex-grow uppercase font-bold ">
-            {{element.nom}}
+            <a [routerLink]="['/festival/festival', element.id]">
+              {{element.nom}}
+            </a>
           </p>
           <div class="p-2 flex-center flex-col">
             <button tuiButton (click)="allerAuPanier()">Voir le panier</button>
@@ -52,7 +54,7 @@
         ></ic-icon>
         <ng-template #dropdown>
           <div class="p-2 flex-center flex-col" #dropdownDiv>
-            <h3 class="pb-5">{{ username }}</h3>
+            <h3 class="pb-5">{{ user?.displayName }}</h3>
             <button tuiButton (click)="logout()">Déconnexion</button>
           </div>
         </ng-template>

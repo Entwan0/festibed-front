@@ -20,6 +20,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { IconModule } from '@visurel/iconify-angular';
 import { TUI_IS_CYPRESS } from '@taiga-ui/cdk';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { firebaseConfig } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -35,7 +41,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
     IconModule,
     TuiButtonModule,
     TuiDropdownModule,
-    MatGridListModule
+    MatGridListModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    BrowserModule,
+    RouterModule,
+    FormsModule,
   ],
   providers: [
     {

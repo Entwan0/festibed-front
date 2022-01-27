@@ -7,6 +7,16 @@ export const environment = {
   api: { url: 'http://localhost:3000' },
 };
 
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDdAALIOeSLefqVPdJ2eMuYnnp_Yi4i0Hc',
+  authDomain: 'bdi-grp7.firebaseapp.com',
+  projectId: 'bdi-grp7',
+  storageBucket: 'bdi-grp7.appspot.com',
+  messagingSenderId: '225218653730',
+  appId: '1:225218653730:web:9c7da666bd216bc84da47b',
+  measurementId: 'G-JZG6QK1FQQ',
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
 import { Router } from '@angular/router';
+import { FacebookAuthService } from '../core/services/facebook-auth.service';
 
 @Component({
   selector: 'app-authentification',
@@ -14,7 +15,11 @@ export class LoginComponent {
     password: new FormControl(null, [Validators.required]),
   });
 
-  constructor(private readonly notifSrv: TuiNotificationsService, private router: Router) {}
+  constructor(
+    private readonly notifSrv: TuiNotificationsService,
+    private router: Router,
+    public authService: FacebookAuthService,
+  ) {}
 
   get f() {
     return this.form.controls;
