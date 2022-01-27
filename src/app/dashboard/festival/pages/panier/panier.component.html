@@ -45,8 +45,8 @@
             <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
           </svg>
         </div>
-        <span class="text-center w-1/5 font-semibold text-sm">{{element.prix}}</span>
-        <span class="text-center w-1/5 font-semibold text-sm">$110.00</span>
+        <span class="text-center w-1/5 font-semibold text-sm">{{element.prix}}€</span>
+        <span class="text-center w-1/5 font-semibold text-sm">{{element.prix * element.quantitePanier}}€</span>
       </div>
 
       <a [routerLink]="['/festival/listeFestival']" class="flex font-semibold text-indigo-600 text-sm mt-10">
@@ -60,7 +60,7 @@
       <h1 class="font-semibold text-2xl border-b pb-8">Récapitulatif de la commande</h1>
       <div class="flex justify-between mt-10 mb-5">
         <span class="font-semibold text-sm uppercase">{{festival?.length}} éléments</span>
-        <span class="font-semibold text-sm">110$</span>
+        <span class="font-semibold text-sm">{{sum}}€</span>
       </div>
       <div>
         <label class="font-medium inline-block mb-3 text-sm uppercase">Expédition</label>
@@ -72,13 +72,14 @@
         <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Code promo</label>
         <input type="text" id="promo" placeholder="Entrez code promo" class="p-2 text-sm w-full">
       </div>
-      <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Appliquer</button>
+      <button tuiButton class="tui-space_right-3 tui-space_bottom-3">Appliquer</button>
       <div class="border-t mt-8">
         <div class="flex font-semibold justify-between py-6 text-sm uppercase">
           <span>Cout total</span>
-          <span>$120</span>
+          <span *ngIf="festival.length > 0"> {{sum + 10}} </span>
+          <span *ngIf="festival.length === 0"> 0 </span>
         </div>
-        <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Payer</button>
+        <button tuiButton [disabled]="festival.length === 0" class="tui-space_right-3 tui-space_bottom-3 w-full">Payer</button>
       </div>
     </div>
 

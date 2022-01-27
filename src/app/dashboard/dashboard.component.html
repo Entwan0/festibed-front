@@ -29,9 +29,8 @@
             Panier
           </p>
 
-          <p *ngFor="let element of panier">
+          <p *ngFor="let element of panier" class="text-center flex-grow uppercase font-bold ">
             {{element.nom}}
-            {{element.quantitePanier}}
           </p>
           <div class="p-2 flex-center flex-col">
             <button tuiButton (click)="allerAuPanier()">Voir le panier</button>
@@ -73,7 +72,7 @@
       class="icon leading-0 p-2 border border-solid rounded-full"
     ></ic-icon>
     <div class="text-center flex-grow">
-      <span class="uppercase font-bold">{{ item.title }}</span>
+      <span class="uppercase font-bold ">{{ item.title }}</span>
     </div>
   </div>
 </div>

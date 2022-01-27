@@ -7,7 +7,7 @@ export interface FestivalAPI extends BaseModel {
 
   img: string;
 
-  prix: string;
+  prix: number;
 
   idPanier: number;
 

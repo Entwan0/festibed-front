@@ -43,4 +43,12 @@ export class PanierFormComponent implements OnInit {
       if (value.idPanier === element.idPanier) this.festival[index].quantitePanier++;
     });
   }
+
+  get sum() {
+    let sum = 0;
+    this.festival.forEach((p, index) => {
+      sum += p.prix * p.quantitePanier;
+    });
+    return sum;
+  }
 }
