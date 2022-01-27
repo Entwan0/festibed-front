@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
 @Injectable()
-export class SharedService {
+export class EnleverPanierService {
   // Observable string sources
   private emitChangeSource = new Subject<any>();
   // Observable string streams

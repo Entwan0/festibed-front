@@ -6,14 +6,16 @@ import houseIcon from '@iconify/icons-ph/house';
 import shoppingartIcon from '@iconify/icons-ph/shopping-cart';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClickService } from '../core/services/click.service';
-import { FestivalListComponent } from './festival/pages/listFestival/list.component';
-import { SharedService } from '../core/services/SharedService';
+import { AjoutPanierService } from '../core/services/ajout-panier.service';
+import { PanierService } from '../core/services/panierService';
+import { FestivalAPI } from '../core/model/api/festival';
+import { EnleverPanierService } from '../core/services/enlever-panier.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [SharedService],
+  providers: [AjoutPanierService, PanierService, EnleverPanierService],
 })
 export class DashboardComponent implements OnDestroy {
   @ViewChild('dropdownBtn') dropdownBtn!: ElementRef;
@@ -49,36 +51,44 @@ export class DashboardComponent implements OnDestroy {
 
   userDropdownOpened = false;
   shoppingCartDropdownOpened = false;
-  nbElementPanier: number = 0;
+
+  idPanier = 0;
+  panier: FestivalAPI[] = [];
 
   constructor(
     iconSrv: IconService,
     private router: Router,
     private clickSrv: ClickService,
     private route: ActivatedRoute,
-    private _sharedService: SharedService,
+    private _ajoutPanierService: AjoutPanierService,
+    private _enleverPanierService: EnleverPanierService,
+    private _panierService: PanierService,
   ) {
     iconSrv.registerAll({
       user: userIcon,
       shoppingCart: shoppingartIcon,
     });
-    _sharedService.changeEmitted$.subscribe((text) => {
-      console.log(text);
-      this.ajoutPanier();
+    _ajoutPanierService.changeEmitted$.subscribe((text) => {
+      const newProduct = JSON.parse(JSON.stringify(text));
+      newProduct.idPanier = this.idPanier;
+      this.idPanier++;
+      this.panier.push(newProduct);
+      this._panierService.setFestival(this.panier);
+    });
+    _enleverPanierService.changeEmitted$.subscribe((idPanier) => {
+      this.panier.forEach((value, index) => {
+        if (value.idPanier === idPanier) this.panier.splice(index, 1);
+      });
+      this._panierService.setFestival(this.panier);
     });
   }
 
   toggleDropdown(v?: boolean) {
-    console.log('It works');
     this.userDropdownOpened = v ?? !this.userDropdownOpened;
   }
 
   ngOnDestroy() {
     this.clickObs.unsubscribe();
-  }
-
-  ajoutPanier() {
-    this.nbElementPanier++;
   }
 
   logout() {

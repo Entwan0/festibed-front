@@ -16,7 +16,7 @@
         class="mr-14"
       >
         <div class="circle ml-7 mt-6">
-          {{ nbElementPanier }}
+          {{ panier.length }}
         </div>
         <ic-icon
           (click)="shoppingCartDropdownOpened = !shoppingCartDropdownOpened; userDropdownOpened = false"
@@ -27,6 +27,11 @@
         <ng-template #shoppingCart>
           <p class="text-lg font-bold flex-center flex-col ">
             Panier
+          </p>
+
+          <p *ngFor="let element of panier">
+            {{element.nom}}
+            {{element.quantitePanier}}
           </p>
           <div class="p-2 flex-center flex-col">
             <button tuiButton (click)="allerAuPanier()">Voir le panier</button>
