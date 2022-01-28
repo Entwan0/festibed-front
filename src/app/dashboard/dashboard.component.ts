@@ -55,7 +55,7 @@ export class DashboardComponent implements OnDestroy {
   shoppingCartDropdownOpened = false;
 
   idPanier = 0;
-  panier: FestivalAPI[] = [];
+  panier: { festival: FestivalAPI }[] = [];
 
   constructor(
     iconSrv: IconService,
@@ -72,16 +72,16 @@ export class DashboardComponent implements OnDestroy {
       shoppingCart: shoppingartIcon,
     });
     _ajoutPanierService.changeEmitted$.subscribe((text) => {
-      const newProduct = JSON.parse(JSON.stringify(text));
-      newProduct.idPanier = this.idPanier;
-      newProduct.quantitePanier = 1;
+      const newProduct = { festival: JSON.parse(JSON.stringify(text)) };
+      newProduct.festival.idPanier = this.idPanier;
+      newProduct.festival.quantitePanier = 1;
       this.idPanier++;
       this.panier.push(newProduct);
       this._panierService.setFestival(this.panier);
     });
     _enleverPanierService.changeEmitted$.subscribe((idPanier) => {
       this.panier.forEach((value, index) => {
-        if (value.idPanier === idPanier) this.panier.splice(index, 1);
+        if (value.festival.idPanier === idPanier) this.panier.splice(index, 1);
       });
       this._panierService.setFestival(this.panier);
     });

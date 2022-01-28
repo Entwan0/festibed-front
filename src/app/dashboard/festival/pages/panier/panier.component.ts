@@ -12,7 +12,7 @@ import { EnleverPanierService } from '../../../../core/services/enlever-panier.s
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PanierFormComponent implements OnInit {
-  festival: FestivalAPI[] = [];
+  festival: { festival: FestivalAPI }[] = [];
 
   constructor(
     private router: Router,
@@ -33,21 +33,23 @@ export class PanierFormComponent implements OnInit {
   enleverQuantite(element: FestivalAPI) {
     if (element.quantitePanier > 1) {
       this.festival?.forEach((value, index) => {
-        if (value.idPanier === element.idPanier) this.festival[index].quantitePanier--;
+        if (value.festival.idPanier === element.idPanier)
+          this.festival[index].festival.quantitePanier--;
       });
     }
   }
 
   ajouterQuantite(element: FestivalAPI) {
     this.festival?.forEach((value, index) => {
-      if (value.idPanier === element.idPanier) this.festival[index].quantitePanier++;
+      if (value.festival.idPanier === element.idPanier)
+        this.festival[index].festival.quantitePanier++;
     });
   }
 
   get sum() {
     let sum = 0;
     this.festival.forEach((p, index) => {
-      sum += p.prixPass * p.quantitePanier;
+      sum += p.festival.prixPass * p.festival.quantitePanier;
     });
     return sum;
   }

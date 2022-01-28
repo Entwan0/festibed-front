@@ -1,7 +1,7 @@
 import { OrganisateurApi } from './organisateur';
 
 export interface FestivalAPI {
-  ndefg: number;
+  ndeg: number;
 
   nomManifestation: string;
 
@@ -10,6 +10,8 @@ export interface FestivalAPI {
   complementDomaine: string;
 
   site: string;
+
+  coordonnees: string;
 
   moisHabituel: number;
 
@@ -33,7 +35,7 @@ export interface FestivalAPI {
 
   organisateur: OrganisateurApi;
 
-  quantitePanier: number;
+  quantitePanier: number; 
 
   idPanier: number;
 }

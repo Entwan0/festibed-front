@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
 import { Router } from '@angular/router';
 import { FacebookAuthService } from '../core/services/facebook-auth.service';
+import { AuthService } from '../core/services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-authentification',
@@ -18,7 +20,8 @@ export class LoginComponent {
   constructor(
     private readonly notifSrv: TuiNotificationsService,
     private router: Router,
-    public authService: FacebookAuthService,
+    public facebookAuthService: FacebookAuthService,
+    private authSrv: AuthService,
   ) {}
 
   get f() {
@@ -38,5 +41,21 @@ export class LoginComponent {
     } else {
       this.router.navigateByUrl('/festival/listeFestival');
     }
+
+    this.authSrv.login(this.f.username.value, this.f.password.value).subscribe({
+      error: (e) => {
+        if (e instanceof HttpErrorResponse) {
+          if ([400, 401].includes(e.status)) {
+            this.notifSrv
+              .show('Login ou mot de passe invalide', {
+                autoClose: 3000,
+                label: 'Erreur de connexion',
+                status: TuiNotification.Error,
+              })
+              .subscribe();
+          }
+        }
+      },
+    });
   }
 }

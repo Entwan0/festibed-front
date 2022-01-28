@@ -54,7 +54,7 @@ export class AuthService {
 
           localStorage.setItem('jwt', res.jwt);
 
-          this.router.navigate(['/ticket/list']).then();
+          this.router.navigate(['/festival/listeFestival']).then();
         }),
       );
   }

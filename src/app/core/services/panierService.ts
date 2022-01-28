@@ -3,13 +3,13 @@ import { FestivalAPI } from '../model/api/festival';
 
 @Injectable()
 export class PanierService {
-  private element: FestivalAPI[] = [];
+  private element: { festival: FestivalAPI }[] = [];
 
-  setFestival(data: FestivalAPI[]) {
+  setFestival(data: { festival: FestivalAPI }[]) {
     this.element = data;
   }
 
-  getFestivals(): FestivalAPI[] {
+  getFestivals(): { festival: FestivalAPI }[] {
     return this.element;
   }
 }
