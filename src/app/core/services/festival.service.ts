@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { FestivalAPI } from '../model/api/festival';
 import { environment } from '../../../environments/environment';
-import { PriorityAPI } from '../model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PriorityService {
+export class FestivalService {
   constructor(private http: HttpClient) {}
 
-  list(): Observable<PriorityAPI[]> {
-    return this.http.get<PriorityAPI[]>(environment.api.url + '/priorities');
+  list(): Observable<FestivalAPI[]> {
+    return this.http.get<FestivalAPI[]>(environment.api.url + '/api/festival/getAll');
   }
 }

@@ -1,4 +1,4 @@
-import { BaseModel } from './base';
+import { BaseModel } from '../base';
 import { ClientAPI } from './client';
 
 export interface ContactAPI extends BaseModel {

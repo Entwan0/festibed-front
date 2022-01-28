@@ -1,4 +1,4 @@
-import { BaseModel } from './base';
+import { BaseModel } from '../base';
 import { AttachmentAPI } from './attachment';
 import { CategoryAPI } from './category';
 import { StatusAPI } from './status';

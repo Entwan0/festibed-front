@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, combineLatest, switchMap, last, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { RequestQueryBuilder, SConditionAND } from '@nestjsx/crud-request';
 import { SFields } from '@nestjsx/crud-request/lib/types/request-query.types';
 import { map } from 'rxjs/operators';
-import { AttachmentAPI, GetManyDefaultResponse, TuiSortDirection } from '../model';
-import { TicketAPI } from '../model';
+import { AttachmentAPI, GetManyDefaultResponse, TuiSortDirection } from '../../model';
+import { TicketAPI } from '../../model';
 import { TuiFileLike } from '@taiga-ui/kit';
 
 @Injectable({

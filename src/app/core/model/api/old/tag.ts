@@ -1,4 +1,4 @@
-import { BaseModel } from './base';
+import { BaseModel } from '../base';
 import { CategoryAPI } from './category';
 
 export interface TagAPI extends BaseModel {

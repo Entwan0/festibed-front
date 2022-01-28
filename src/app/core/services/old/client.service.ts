@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { CondOperator, RequestQueryBuilder } from '@nestjsx/crud-request';
-import { ClientAPI } from '../model';
+import { ClientAPI } from '../../model';
 
 @Injectable({
   providedIn: 'root',

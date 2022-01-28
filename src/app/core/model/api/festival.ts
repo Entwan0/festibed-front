@@ -1,15 +1,39 @@
-import { BaseModel } from './base';
+import { OrganisateurApi } from './organisateur';
 
-export interface FestivalAPI extends BaseModel {
-  nom: string;
+export interface FestivalAPI {
+  ndefg: number;
 
-  ville: string;
+  nomManifestation: string;
 
-  img: string;
+  domaine: string;
 
-  prix: number;
+  complementDomaine: string;
 
-  idPanier: number;
+  site: string;
+
+  moisHabituel: number;
+
+  dateDebut: Date;
+
+  dateFin: Date;
+
+  duree: number;
+
+  periodicite: string;
+
+  commentaire: string;
+
+  nombrePassProposes: number;
+
+  nombrePassRestants: number;
+
+  prixPass: number;
+
+  adresse: string;
+
+  organisateur: OrganisateurApi;
 
   quantitePanier: number;
+
+  idPanier: number;
 }

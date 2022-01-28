@@ -74,6 +74,7 @@ export class DashboardComponent implements OnDestroy {
     _ajoutPanierService.changeEmitted$.subscribe((text) => {
       const newProduct = JSON.parse(JSON.stringify(text));
       newProduct.idPanier = this.idPanier;
+      newProduct.quantitePanier = 1;
       this.idPanier++;
       this.panier.push(newProduct);
       this._panierService.setFestival(this.panier);

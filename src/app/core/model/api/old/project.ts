@@ -1,4 +1,4 @@
-import { BaseModel } from './base';
+import { BaseModel } from '../base';
 import { SoftwareAPI } from './software';
 
 export interface ProjectAPI extends BaseModel {

@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AjoutPanierService } from '../../../../core/services/ajout-panier.service';
 import { PanierService } from '../../../../core/services/panierService';
-import {FestivalAPI} from "../../../../core/model/api/festival";
-import {EnleverPanierService} from "../../../../core/services/enlever-panier.service";
+import { FestivalAPI } from '../../../../core/model/api/festival';
+import { EnleverPanierService } from '../../../../core/services/enlever-panier.service';
 
 @Component({
   selector: 'app-ticket-list-item,[ticket]',
@@ -47,7 +47,7 @@ export class PanierFormComponent implements OnInit {
   get sum() {
     let sum = 0;
     this.festival.forEach((p, index) => {
-      sum += p.prix * p.quantitePanier;
+      sum += p.prixPass * p.quantitePanier;
     });
     return sum;
   }

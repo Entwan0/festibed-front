@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { CondOperator, RequestQueryBuilder, SConditionAND } from '@nestjsx/crud-request';
 import { SFields } from '@nestjsx/crud-request/lib/types/request-query.types';
-import { ClientAPI, ContactAPI } from '../model';
+import { ClientAPI, ContactAPI } from '../../model';
 
 @Injectable({
   providedIn: 'root',
