@@ -1,13 +1,10 @@
 import { OrganisateurApi } from './organisateur';
+import { CommuneAPI } from './commune';
 
 export interface FestivalAPI {
-  ndeg: number;
+  ndeg: string;
 
   nomManifestation: string;
-
-  domaine: string;
-
-  complementDomaine: string;
 
   site: string;
 
@@ -35,7 +32,11 @@ export interface FestivalAPI {
 
   organisateur: OrganisateurApi;
 
-  quantitePanier: number; 
+  domaine: string;
+
+  commune: CommuneAPI;
+
+  quantitePanier: number;
 
   idPanier: number;
 }

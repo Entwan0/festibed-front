@@ -42,7 +42,7 @@ export class LoginComponent {
       this.router.navigateByUrl('/festival/listeFestival');
     }
 
-    this.authSrv.login(this.f.username.value, this.f.password.value).subscribe({
+    /* this.authSrv.login(this.f.username.value, this.f.password.value).subscribe({
       error: (e) => {
         if (e instanceof HttpErrorResponse) {
           if ([400, 401].includes(e.status)) {
@@ -56,6 +56,6 @@ export class LoginComponent {
           }
         }
       },
-    });
+    });*/
   }
 }

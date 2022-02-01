@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {
   TUI_ANIMATIONS_DURATION,
   TUI_TEXTFIELD_LABEL_OUTSIDE,
-  TuiButtonModule,
+  TuiButtonModule, TuiDialogModule,
   TuiDropdownModule,
   TuiNotificationsModule,
   TuiScrollbarModule,
@@ -41,6 +41,7 @@ import { firebaseConfig } from '../environments/environment';
     IconModule,
     TuiButtonModule,
     TuiDropdownModule,
+    TuiDialogModule,
     MatGridListModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AjoutPanierService } from '../../../../core/services/ajout-panier.service';
 import { FestivalAPI } from '../../../../core/model/api/festival';
 import { FestivalService } from '../../../../core/services/festival.service';
-import { shareReplay } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 
 @Component({
   templateUrl: './list.component.html',
@@ -12,7 +12,7 @@ import { shareReplay } from 'rxjs';
 export class FestivalListComponent implements OnInit {
   breakpoint: any;
 
-  readonly festivals$ = this._festivalService.list().pipe(shareReplay());
+  festivals$: Observable<FestivalAPI[]> = this._festivalService.list().pipe(shareReplay());
 
   constructor(
     private _sharedService: AjoutPanierService,
@@ -34,5 +34,11 @@ export class FestivalListComponent implements OnInit {
     if (window.innerWidth > 1870) this.breakpoint = 3;
     else if (window.innerWidth < 1280) this.breakpoint = 1;
     else this.breakpoint = 2;
+  }
+
+  search(city: string) {
+    if (city === null || city === '' || city === undefined) {
+      this.festivals$ = this._festivalService.list().pipe(shareReplay());
+    } else this.festivals$ = this._festivalService.getByCity(city).pipe(shareReplay());
   }
 }

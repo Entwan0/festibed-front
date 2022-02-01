@@ -1,7 +1,7 @@
 <form [formGroup]="form">
 
   <div class="text-3xl font-bold flex-center flex-col ">
-    Nom festival
+    {{festival.nomManifestation}}
   </div>
 
   <div class="tui-col_md-12">
@@ -15,21 +15,52 @@
   <div class="tui-col_md-12 mt-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <label tuiLabel label="dates début" class="w-full">
-          <tui-input-date [readOnly]=true class="b-form" formControlName="date">
+          <tui-input-date [readOnly]=true class="b-form" formControlName="dateDebut">
           </tui-input-date>
         </label>
 
         <label tuiLabel label="dates fin" class="w-full">
-          <tui-input-date [readOnly]=true class="b-form" formControlName="date">
+          <tui-input-date [readOnly]=true class="b-form" formControlName="dateFin">
           </tui-input-date>
         </label>
     </div>
   </div>
 
+  <div class="tui-col_md-12 mt-4">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <label tuiLabel label="site" class="w-full">
+        <tui-input [readOnly]=true class="b-form" formControlName="site">
+        </tui-input>
+      </label>
+
+      <label tuiLabel label="Mois habituel début" class="w-full">
+        <tui-input [readOnly]=true class="b-form" formControlName="moisHabituel">
+        </tui-input>
+      </label>
+
+      <label tuiLabel label="commune" class="w-full">
+        <tui-input [readOnly]=true class="b-form" formControlName="commune">
+        </tui-input>
+      </label>
+    </div>
+  </div>
+
+  <div class="tui-col_md-12 mt-4">
+    <label tuiLabel label="Adresse" class="w-full">
+      <tui-input [readOnly]=true class="b-form" formControlName="adresse">
+      </tui-input>
+    </label>
+  </div>
+
+  <div class="w-min m-auto mt-5">
+    <button
+      tuiButton
+      type="button"
+      [routerLink]="['/festival/listeFestival']"
+      appearance="primary"
+      class="tui-space_right-3 tui-space_bottom-3 "
+    >
+      Retour
+    </button>
+  </div>
 </form>
-
-
-<h1>
-  j'ai l'id {{ id }}
-</h1>
-

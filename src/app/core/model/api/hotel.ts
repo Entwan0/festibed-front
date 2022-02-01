@@ -1,11 +1,8 @@
 import { EtablissementAPI } from './etablissement';
+import { ChambreAPI } from './chambre';
 
 export interface HotelAPI extends EtablissementAPI {
-  chambresSimples: number;
-
-  chambresDoubles: number;
-
-  chambresFamiliales: number;
-
   capaciteAccueil: number;
+
+  chambres: ChambreAPI[];
 }

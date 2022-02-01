@@ -1,3 +1,21 @@
+<div class="flex-center pt-1">
+  <tui-input
+    #searchByCity
+    [tuiTextfieldCustomContent]="icon"
+    (keyup.enter)="search(searchByCity.value)"
+    class="tui-bg-transparent text-gray w-96 pr-7"
+  >
+    Filtrer par commune
+
+    <ng-template #icon>
+      <tui-svg
+        src="tuiIconSearch"
+        class="bg-primary cursor-pointer rounded-full p-0.5 input-icon"
+      ></tui-svg>
+    </ng-template>
+  </tui-input>
+</div>
+
 <mat-grid-list [cols]="breakpoint" cols="3" rowHeight="2:1" (window:resize)="onResize($event)">
   <mat-grid-tile *ngFor="let festival of festivals$ | async">
     <div  class="shadow-lg hover:shadow-2xl w-4/5 h-5/6 rounded-3xl">
@@ -15,7 +33,7 @@
       </div>
 
       <div class="flex-center">
-        {{festival.adresse}}
+        {{festival.commune?.nomCommune}}
       </div>
 
       <div class="absolute inset-x-0 bottom-0 flex-center ajouterPanier">
@@ -24,13 +42,13 @@
           type="button"
           appearance="primary"
           class="tui-space_right-3 tui-space_bottom-3 "
-         (click)="addPanier(festival)"
+          [routerLink]="['../listeEtablissement', festival.ndeg]"
         >
-          Ajouter au panier
+          Choisir
         </button>
       </div>
 
-      <div class="absolute bottom-0 right-0 test text-lg font-bold">
+      <div class="absolute bottom-0 right-2 test text-lg font-bold">
         {{festival.prixPass}}
       </div>
     </div>

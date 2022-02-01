@@ -31,7 +31,9 @@ import {
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
-  TuiDropdownSelectionModule, TuiInputDateModule, TuiInputDateRangeModule,
+  TuiDropdownSelectionModule,
+  TuiInputDateModule,
+  TuiInputDateRangeModule,
   TuiInputFileModule,
   TuiInputModule,
   TuiInputNumberModule,
@@ -45,19 +47,19 @@ import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
 import { FestivalComponent } from './pages/festival.component';
 import { IconModule } from '@visurel/iconify-angular';
 import { QuillModule } from 'ngx-quill';
-import { LogementListComponent } from './pages/listLogement/list.component';
 import { FestivalFormComponent } from './pages/formFestival/form.component';
 import { PanierFormComponent } from './pages/panier/panier.component';
 import { TuiLetModule } from '@taiga-ui/cdk';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DescriptionFestivalComponent } from './pages/descriptionFestival/descriptionFestival.component';
+import { EtablissementListComponent } from './pages/listEtablissement/list.component';
 
 @NgModule({
   declarations: [
     FestivalComponent,
     FestivalListComponent,
     FestivalComponent,
-    LogementListComponent,
+    EtablissementListComponent,
     FestivalFormComponent,
     PanierFormComponent,
     DescriptionFestivalComponent,

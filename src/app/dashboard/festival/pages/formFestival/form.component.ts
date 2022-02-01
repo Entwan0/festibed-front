@@ -2,6 +2,7 @@ import { FormGroup } from '@angular/forms';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormHelper } from '../../../../core/helpers';
 import { BehaviorSubject } from 'rxjs';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-ticket-list-item,[ticket]',
@@ -16,7 +17,7 @@ export class FestivalFormComponent {
 
   readonly = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   get f() {
     return this.form.controls;
