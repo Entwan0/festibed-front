@@ -1,0 +1,80 @@
+<div *ngFor="let hotel of hotels$ | async" class="text-3xl font-bold flex-center flex-col ">
+  {{hotel.nomCommercial}}
+</div>
+
+<form [formGroup]="testForm">
+  <div class="tui-col_md-12 mt-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <label tuiLabel label="Nombre pass festival" class="w-full">
+        <tui-input-number
+          formControlName="nombrePass"
+          [precision]="0"
+          [min]="0"
+        >
+          Combien de pass festival voulez-vous ?
+        </tui-input-number>
+      </label>
+
+      <label *ngIf="estChoisitNbrPass" tuiLabel label="Nombre chambre simple (1 personnes)" class="w-full">
+        <tui-input-number
+          formControlName="nombreChambreSimple"
+          [precision]="0"
+          [min]="0"
+        >
+          Combien de chambre simple voulez-vous ?
+        </tui-input-number>
+      </label>
+    </div>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+      <button
+        tuiButton
+        type="button"
+        (click)="choisitNombrePass()"
+        appearance="primary"
+        class="w-auto m-auto mt-5"
+      >
+        Valider mes pass
+      </button>
+
+      <label *ngIf="estChoisitNbrPass" tuiLabel label="Nombre chambre double (2 personnes)" class="w-full">
+        <tui-input-number
+          formControlName="nombreChambreDouble"
+          [precision]="0"
+          [min]="0"
+        >
+          Combien de chambre double voulez-vous ?
+        </tui-input-number>
+      </label>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+      <div>
+
+      </div>
+
+      <label *ngIf="estChoisitNbrPass" tuiLabel label="Nombre chambre familial (4 personnes)" class="w-full">
+        <tui-input-number
+          formControlName="nombreChambreFamilial"
+          [precision]="0"
+          [min]="0"
+        >
+          Combien de chambre familial voulez-vous ?
+        </tui-input-number>
+      </label>
+    </div>
+  </div>
+</form>
+
+<div class="grid place-items-center pt-10">
+  <button
+    tuiButton
+    type="button"
+    (click)="ajouterPanier()"
+    appearance="primary"
+    class="tui-space_right-3 tui-space_bottom-3 "
+  >
+    Ajouter au panier
+  </button>
+</div>

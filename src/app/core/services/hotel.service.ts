@@ -11,6 +11,14 @@ export class HotelService {
   constructor(private http: HttpClient) {}
 
   listByFestivalId(festivalId: string | null): Observable<HotelAPI[]> {
-    return this.http.get<HotelAPI[]>(environment.api.url + '/hotel/byFestivalId/' + festivalId);
+    return this.http.get<HotelAPI[]>(
+      environment.api.url + '/etablissement/hotel/byFestivalId/' + festivalId,
+    );
+  }
+
+  getOne(hotelNomCommercial: string): Observable<HotelAPI[]> {
+    return this.http.get<HotelAPI[]>(
+      environment.api.url + '/etablissement/hotel/byId/' + hotelNomCommercial,
+    );
   }
 }

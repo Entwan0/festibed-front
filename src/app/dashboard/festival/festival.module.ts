@@ -53,6 +53,7 @@ import { TuiLetModule } from '@taiga-ui/cdk';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DescriptionFestivalComponent } from './pages/descriptionFestival/descriptionFestival.component';
 import { EtablissementListComponent } from './pages/listEtablissement/list.component';
+import { SelectionHotelComponent } from './pages/selectionHotel/selectionHotelcomponent';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { EtablissementListComponent } from './pages/listEtablissement/list.compo
     FestivalFormComponent,
     PanierFormComponent,
     DescriptionFestivalComponent,
+    SelectionHotelComponent,
   ],
   exports: [],
   imports: [

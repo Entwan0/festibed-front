@@ -6,6 +6,7 @@ import { FestivalFormComponent } from './pages/formFestival/form.component';
 import { PanierFormComponent } from './pages/panier/panier.component';
 import { DescriptionFestivalComponent } from './pages/descriptionFestival/descriptionFestival.component';
 import { EtablissementListComponent } from './pages/listEtablissement/list.component';
+import { SelectionHotelComponent } from './pages/selectionHotel/selectionHotelcomponent';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       { path: 'formFestival', component: FestivalFormComponent },
       { path: 'panier', component: PanierFormComponent },
       { path: 'festival/:id', component: DescriptionFestivalComponent },
-      { path: '**', redirectTo: '/' },
+      { path: 'hotel/:nomCommercial', component: SelectionHotelComponent },
+      { path: '**', redirectTo: 'listeFestival' },
     ],
   },
 ];

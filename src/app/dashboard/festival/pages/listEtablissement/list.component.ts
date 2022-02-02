@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EtablissementListComponent implements OnInit {
+  breakpoint: any;
   hotels$: Observable<HotelAPI[]> = new Observable<HotelAPI[]>();
 
   constructor(private route: ActivatedRoute, private hotelSrv: HotelService) {}
@@ -18,5 +19,15 @@ export class EtablissementListComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     this.hotels$ = this.hotelSrv.listByFestivalId(id);
+
+    if (window.innerWidth > 1870) this.breakpoint = 3;
+    else if (window.innerWidth < 1280) this.breakpoint = 1;
+    else this.breakpoint = 2;
+  }
+
+  onResize(event: any) {
+    if (window.innerWidth > 1870) this.breakpoint = 3;
+    else if (window.innerWidth < 1280) this.breakpoint = 1;
+    else this.breakpoint = 2;
   }
 }

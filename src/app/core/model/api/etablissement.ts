@@ -1,11 +1,15 @@
+import { CommuneAPI } from './commune';
+
 export interface EtablissementAPI {
   nomCommercial: String;
 
-  Classement: number;
+  classement: number;
 
   site: string;
 
   coordonnees: string;
 
   adresse: string;
+
+  commune: CommuneAPI;
 }

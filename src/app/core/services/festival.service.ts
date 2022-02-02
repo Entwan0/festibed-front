@@ -13,14 +13,14 @@ export class FestivalService {
   constructor(private http: HttpClient) {}
 
   list(): Observable<FestivalAPI[]> {
-    return this.http.get<FestivalAPI[]>(environment.api.url + '/api/festival/getAll');
+    return this.http.get<FestivalAPI[]>(environment.api.url + '/festival/getAll');
   }
 
   getById(id: number): Observable<FestivalAPI> {
-    return this.http.get<FestivalAPI>(environment.api.url + '/api/festival/getById/' + id);
+    return this.http.get<FestivalAPI>(environment.api.url + '/festival/getById/' + id);
   }
 
   getByCity(city: string): Observable<FestivalAPI[]> {
-    return this.http.get<FestivalAPI[]>(environment.api.url + '/api/festival/byCity/' + city);
+    return this.http.get<FestivalAPI[]>(environment.api.url + '/festival/byCity/' + city);
   }
 }
