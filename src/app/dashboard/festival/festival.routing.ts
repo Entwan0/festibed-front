@@ -18,7 +18,7 @@ const routes: Routes = [
       { path: 'formFestival', component: FestivalFormComponent },
       { path: 'panier', component: PanierFormComponent },
       { path: 'festival/:id', component: DescriptionFestivalComponent },
-      { path: 'hotel/:nomCommercial', component: SelectionHotelComponent },
+      { path: 'hotel/:nomCommercial/:id', component: SelectionHotelComponent },
       { path: '**', redirectTo: 'listeFestival' },
     ],
   },

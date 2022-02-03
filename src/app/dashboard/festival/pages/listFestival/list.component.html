@@ -17,7 +17,7 @@
 </div>
 
 <mat-grid-list [cols]="breakpoint" cols="3" rowHeight="2:1" (window:resize)="onResize($event)">
-  <mat-grid-tile *ngFor="let festival of festivals$ | async">
+  <mat-grid-tile *ngFor="let festival of (festivals$ | async)?.content">
     <div  class="shadow-lg hover:shadow-2xl w-4/5 h-5/6 rounded-3xl">
 
       <div class="text-xl font-bold flex-center flex-col ">
@@ -54,3 +54,10 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+
+<tui-pagination
+  [activePadding]="activePadding"
+  [length]="lengthPadding"
+  [(index)]="valuePadding"
+  (click)="valuePaddingChange()"
+></tui-pagination>

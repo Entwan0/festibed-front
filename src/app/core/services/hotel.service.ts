@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HotelAPI } from '../model/api/hotel';
+import {ReservationAPI} from "../model/api/reservation";
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +21,9 @@ export class HotelService {
     return this.http.get<HotelAPI[]>(
       environment.api.url + '/etablissement/hotel/byId/' + hotelNomCommercial,
     );
+  }
+
+  post(s: any): Observable<ReservationAPI> {
+    return this.http.post<ReservationAPI>(environment.api.url + '/reservation/save', s);
   }
 }

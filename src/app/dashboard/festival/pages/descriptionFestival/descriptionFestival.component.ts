@@ -25,14 +25,13 @@ export class DescriptionFestivalComponent implements OnInit {
     coordonnes: new FormControl(null),
     moisHabituel: new FormControl(null),
     prixPass: new FormControl(null),
-    adresse: new FormControl(null),
     commune: new FormControl(null),
   });
 
   constructor(private route: ActivatedRoute, private festivalSrv: FestivalService) {}
 
   ngOnInit() {
-    const id = parseInt(this.route.snapshot.paramMap.get('id') ?? 'new');
+    const id = this.route.snapshot.paramMap.get('id') ?? 'new';
 
     this.festivalSrv.getById(id).subscribe((festival) => {
       this.festival = festival;
@@ -47,7 +46,6 @@ export class DescriptionFestivalComponent implements OnInit {
         coordonnes: this.festival.coordonnees,
         moisHabituel: this.festival.moisHabituel,
         prixPass: this.festival.prixPass,
-        adresse: this.festival.adresse,
         commune: this.festival.commune?.nomCommune,
       });
     });

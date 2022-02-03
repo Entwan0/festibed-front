@@ -1,5 +1,6 @@
 import { OrganisateurApi } from './organisateur';
 import { CommuneAPI } from './commune';
+import {ReservationAPI} from "./reservation";
 
 export interface FestivalAPI {
   ndeg: string;
@@ -28,13 +29,13 @@ export interface FestivalAPI {
 
   prixPass: number;
 
-  adresse: string;
-
   organisateur: OrganisateurApi;
 
   domaine: string;
 
   commune: CommuneAPI;
+
+  reservations: ReservationAPI[];
 
   quantitePanier: number;
 

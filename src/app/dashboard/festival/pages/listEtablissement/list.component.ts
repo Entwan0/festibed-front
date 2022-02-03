@@ -10,15 +10,16 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EtablissementListComponent implements OnInit {
+  id: any;
   breakpoint: any;
   hotels$: Observable<HotelAPI[]> = new Observable<HotelAPI[]>();
 
   constructor(private route: ActivatedRoute, private hotelSrv: HotelService) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
 
-    this.hotels$ = this.hotelSrv.listByFestivalId(id);
+    this.hotels$ = this.hotelSrv.listByFestivalId(this.id);
 
     if (window.innerWidth > 1870) this.breakpoint = 3;
     else if (window.innerWidth < 1280) this.breakpoint = 1;

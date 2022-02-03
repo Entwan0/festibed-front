@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { RequestQueryBuilder, SConditionAND } from '@nestjsx/crud-request';
 import { FestivalAPI } from '../model/api/festival';
 import { environment } from '../../../environments/environment';
-import {SFields} from "@nestjsx/crud-request/lib/types/request-query.types";
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +11,23 @@ import {SFields} from "@nestjsx/crud-request/lib/types/request-query.types";
 export class FestivalService {
   constructor(private http: HttpClient) {}
 
-  list(): Observable<FestivalAPI[]> {
+  list(page: number): Observable<{ content: FestivalAPI[]; totalPages: number }> {
+    return this.http.get<{ content: FestivalAPI[]; totalPages: number }>(
+      environment.api.url + '/festival/getAll?page=' + page + '&size=9',
+    );
+  }
+
+  listAll(): Observable<FestivalAPI[]> {
     return this.http.get<FestivalAPI[]>(environment.api.url + '/festival/getAll');
   }
 
-  getById(id: number): Observable<FestivalAPI> {
+  getById(id: string): Observable<FestivalAPI> {
     return this.http.get<FestivalAPI>(environment.api.url + '/festival/getById/' + id);
   }
 
-  getByCity(city: string): Observable<FestivalAPI[]> {
-    return this.http.get<FestivalAPI[]>(environment.api.url + '/festival/byCity/' + city);
+  getByCity(city: string): Observable<{ content: FestivalAPI[]; totalPages: number }> {
+    return this.http.get<{ content: FestivalAPI[]; totalPages: number }>(
+      environment.api.url + '/festival/byCity/' + city,
+    );
   }
 }

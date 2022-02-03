@@ -12,6 +12,7 @@ import { FestivalAPI } from '../core/model/api/festival';
 import { EnleverPanierService } from '../core/services/enlever-panier.service';
 import { FacebookAuthService } from '../core/services/facebook-auth.service';
 import firebase from 'firebase/compat/app';
+import { ChambreAPI } from '../core/model/api/chambre';
 
 @Component({
   selector: 'app-dashboard',
@@ -55,7 +56,16 @@ export class DashboardComponent implements OnDestroy {
   shoppingCartDropdownOpened = false;
 
   idPanier = 0;
-  panier: { festival: FestivalAPI }[] = [];
+  panier: {
+    dateReservation: Date;
+    montant: number;
+    nombrePass: number;
+    festival: FestivalAPI;
+    nomHotel: string;
+    nbrChambreSimple: number;
+    nbrChambreDouble: number;
+    nbrChambreFamilial: number;
+  }[] = [];
 
   constructor(
     iconSrv: IconService,
@@ -72,7 +82,7 @@ export class DashboardComponent implements OnDestroy {
       shoppingCart: shoppingartIcon,
     });
     _ajoutPanierService.changeEmitted$.subscribe((text) => {
-      const newProduct = { festival: JSON.parse(JSON.stringify(text)) };
+      const newProduct = JSON.parse(JSON.stringify(text));
       newProduct.festival.idPanier = this.idPanier;
       newProduct.festival.quantitePanier = 1;
       this.idPanier++;

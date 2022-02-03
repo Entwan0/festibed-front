@@ -13,4 +13,13 @@ export class ChambreService {
   listByFestivalId(festivalId: string | null): Observable<ChambreAPI[]> {
     return this.http.get<ChambreAPI[]>(environment.api.url + '/chambre/byFestivalId' + festivalId);
   }
+
+  nbrChambreByFestivalAndHotel(
+    festivalId: string | null,
+    nomHotel: string | null,
+  ): Observable<any> {
+    return this.http.get<any>(
+      environment.api.url + '/logement/chambre/byFestivalAndHotel/' + festivalId + '/' + nomHotel,
+    );
+  }
 }

@@ -39,6 +39,7 @@ import {
   TuiInputNumberModule,
   TuiInputPasswordModule,
   TuiLineClampModule,
+  TuiPaginationModule,
   TuiSelectModule,
   TuiSliderModule,
   TuiTextAreaModule,
@@ -113,6 +114,7 @@ import { SelectionHotelComponent } from './pages/selectionHotel/selectionHotelco
     MatGridListModule,
     TuiInputDateRangeModule,
     TuiInputDateModule,
+    TuiPaginationModule,
   ],
 })
 export class FestivalModule {}
