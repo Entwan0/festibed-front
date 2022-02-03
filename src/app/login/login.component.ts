@@ -3,8 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiNotification, TuiNotificationsService } from '@taiga-ui/core';
 import { Router } from '@angular/router';
 import { FacebookAuthService } from '../core/services/facebook-auth.service';
-import { AuthService } from '../core/services/auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-authentification',
@@ -21,7 +19,6 @@ export class LoginComponent {
     private readonly notifSrv: TuiNotificationsService,
     private router: Router,
     public facebookAuthService: FacebookAuthService,
-    private authSrv: AuthService,
   ) {}
 
   get f() {

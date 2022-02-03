@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: { url: '129.88.210.23:8080' },
+  api: { url: 'http://129.88.210.23:8080' },
 };
 
 export const firebaseConfig = {
